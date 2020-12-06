@@ -1,61 +1,13 @@
 #include <SFML\Graphics.hpp>
+#include "MoveHandler.cpp"
 #include <cassert>
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
-class KeyChecker
-{
-    public:
-        KeyChecker()
-        {
-            Check();
-        }
-
-        bool Left, Right, Up, Down;
-        void Check()
-        {
-            Left = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
-            Right = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
-            Up = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
-            Down = sf::Keyboard::isKeyPressed(sf::Keyboard::S);
-        }
-
-        bool BotherMoving()
-        {
-            return Left || Right || Up || Down;
-        }
-};
-
-class MoveHandler {
-private:
-    KeyChecker checker;
+class Bullet : public sf::Sprite {
 public:
-    void CheckAndMove(sf::Sprite *sprite) {
-        checker.Check();
-        if (checker.BotherMoving())
-        {
-            float x = 0;
-            float y = 0;
-            if (checker.Left)
-            {
-                x -= .1;
-            }
-            if (checker.Right)
-            {
-                x += .1;
-            }
-            if (checker.Up)
-            {
-                y -= .1;
-            }
-            if (checker.Down)
-            {
-                y += .1;
-            }
-            sprite->move(x, y);
-        }
+    Bullet(sf::Sprite *player) {
+        sf::Texture texture;
+        texture.loadFromFile("C:\\SFML-2.5.1\\projectile.png");
+        setTexture(texture);
+        setPosition(player->getPosition().x + player->getGlobalBounds().width / 2, player->getPosition().y);
     }
 };
 
@@ -73,11 +25,36 @@ int main() {
     sprite.setTexture(texture);
     sprite.setScale(.1, .1);
     MoveHandler handler;
+    std::vector<sf::Sprite> bullets;
+    int bulletCount = 0;
+
     while (sfmlWin.isOpen()) {
         sfmlWin.clear();
-        handler.CheckAndMove(&sprite);
+        handler.CheckAndMove(&sprite);   
+
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            Bullet newBullet = Bullet(&sprite);
+            bullets.push_back(newBullet);
+            bulletCount++;
+        }
+        if (bulletCount > 0)
+        {
+            if (bulletCount > 50)
+            {
+                bullets.pop_back();
+                bullets.pop_back();
+            }
+            for (auto& it : bullets) {
+
+                sfmlWin.draw(it);
+            }
+        }
+
         sfmlWin.draw(sprite);
+            
         sfmlWin.display();
     }
+
     return 0;
 }
