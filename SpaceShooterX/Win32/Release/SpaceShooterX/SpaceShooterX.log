@@ -1,6 +1,11 @@
 ﻿  Main.cpp
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp(43,1): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp(47,1): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp(51,1): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp(55,1): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp(74,27): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  1 of 70 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+  5 of 75 functions ( 6.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
