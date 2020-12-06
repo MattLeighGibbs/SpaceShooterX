@@ -1,3 +1,2 @@
 ﻿  Main.cpp
-  LINK : D:\Development\SpaceShooterX\SpaceShooterX\Debug\SpaceShooterX.exe not found or not built by the last incremental link; performing full link
-  SpaceShooterX.vcxproj -> D:\Development\SpaceShooterX\SpaceShooterX\Debug\SpaceShooterX.exe
+D:\Development\SpaceShooterX\SpaceShooterX\Main.cpp : fatal error C1041: cannot open program database 'D:\Development\SpaceShooterX\SpaceShooterX\Debug\vc142.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
