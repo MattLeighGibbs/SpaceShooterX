@@ -155,7 +155,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KeyChecker.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MoveHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\image.jpg" />
