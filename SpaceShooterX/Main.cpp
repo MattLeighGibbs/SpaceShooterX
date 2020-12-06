@@ -1,19 +1,31 @@
-#include <SFML/Graphics.hpp>
+#include <SFML\Graphics.hpp>
+#include <cassert>
 
-int main()
-{
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Title");
-	sf::Event event;
+int main() {
+    sf::RenderWindow sfmlWin(sf::VideoMode(600, 360), "Hello World SFML Window");
+    sf::Texture texture;
+    //You need to pass the font file location
+    if (!texture.loadFromFile(/*
+                           Put the filename that identify the font file you want to load*/"C:\\SFML-2.5.1\\test.png")) {
+        return -1;
+    }
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    while (sfmlWin.isOpen()) {
 
-	while (window.isOpen())
-	{
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				window.close();
-			}
-		}
-	}
-	return 0;
+        sf::Event e;
+        while (sfmlWin.pollEvent(e)) {
+
+            switch (e.type) {
+            case sf::Event::EventType::Closed:
+                sfmlWin.close();
+                break;
+            }
+        }
+
+        sfmlWin.clear();
+        sfmlWin.draw(sprite);
+        sfmlWin.display();
+    }
+    return 0;
 }
