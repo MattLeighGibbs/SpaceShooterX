@@ -1,2 +1,0 @@
-D:\Development\SpaceShooterX\SpaceShooterX\Debug\SpaceShooterX.exe
-D:\Development\SpaceShooterX\SpaceShooterX\Debug\SpaceShooterX.pdb
